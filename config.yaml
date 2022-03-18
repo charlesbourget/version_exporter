@@ -1,0 +1,3 @@
+rpm:
+  - python3-rpm
+  - python39
