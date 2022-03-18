@@ -9,9 +9,6 @@ RUN dnf update -y && \
 
 RUN python3 -m pip install poetry==1.0.0
 
-WORKDIR /opt
-COPY config.yaml .
-
 WORKDIR /version_exporter
 COPY . .
 

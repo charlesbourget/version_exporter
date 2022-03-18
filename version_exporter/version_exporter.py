@@ -9,6 +9,7 @@ from prometheus_client import start_http_server, Info
 from version_exporter.config import read_config
 from version_exporter.rpm_query import get_versions
 
+
 def main():
     """
     Main entrypoint
@@ -25,7 +26,7 @@ def main():
         while True:
             continue
     except KeyboardInterrupt:
-        print('Shutting down...')
+        print("Shutting down...")
 
 
 def parse_args() -> argparse.Namespace:

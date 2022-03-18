@@ -1,0 +1,9 @@
+version: '3'
+services:
+  version-exporter:
+    build: .
+    volumes:
+      - /var/lib/rpm:/var/lib/rpm:ro
+      - ./config.yaml:/opt/config.yaml
+    ports:
+      - 9998:9998
