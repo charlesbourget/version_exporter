@@ -40,3 +40,16 @@ build-backend = "poetry.core.masonry.api"
   [tool.poe.tasks.check]
   help     = "Run all checks on the code base"
   sequence = ["check-docs", "format", "types", "lint"]
+  [tool.poe.tasks.clean]
+  help = "Remove generated files"
+  cmd  = """
+    rm -rf .coverage
+           .mypy_cache
+           .pytest_cache
+           ./**/__pycache__
+           dist
+           htmlcov
+           ./tests/fixtures/simple_project/venv
+           ./tests/fixtures/venv_project/myvenv
+           ./tests/temp
+  """
