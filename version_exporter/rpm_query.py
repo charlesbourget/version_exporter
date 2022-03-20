@@ -1,34 +1,35 @@
 """
 Wrapper around RPM database
 """
-import sys
+import logging
 
 try:
     import rpm
 except ModuleNotFoundError:
-    print(
+    logging.error(
         (
             "You must install the following package:\n"
             "sudo dnf install -y python3-rpm\n"
             "'rpm' doesn't come as a pip but as a system dependency.\n"
-        ),
-        file=sys.stderr,
+        )
     )
     raise
 
 
-def get_versions(rpm_packages: list):
-    """_summary_
+def get_versions(rpm_packages: list) -> dict:
+    """
+    Get version number from list of packages
 
     Args:
-        packages (list): _description_
+        rpm_packages (list): List of packages to fetch
 
     Returns:
-        _type_: _description_
+        dict: packages with their versions
     """
     versions = {}
     for rpm_package in rpm_packages:
-        with QueryHelper(limit=5, name=rpm_package) as rpm_query:
+        logging.info("Fetching version for package: %s", rpm_package)
+        with QueryHelper(limit=1, name=rpm_package) as rpm_query:
             for result in rpm_query:
                 versions[result["name"]] = result["version"]
 

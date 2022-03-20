@@ -6,4 +6,4 @@ services:
       - /var/lib/rpm:/var/lib/rpm:ro
       - ./config.yaml:/opt/config.yaml
     ports:
-      - 9998:9998
+      - "9998:9998"
